@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ホームページ案の比較｜國學院駅伝部応援情報</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --aka: #b0175a;
+      --ink: #1c1418;
+      --paper: #f6f1ea;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Zen Kaku Gothic New", sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.75;
+    }
+    a { color: inherit; }
+    .page { width: min(1080px, calc(100% - 2rem)); margin: 0 auto; padding: 2.4rem 0 4rem; }
+    h1 {
+      font-family: "Shippori Mincho", serif;
+      font-size: clamp(1.7rem, 4vw, 2.4rem);
+      margin: .4rem 0 1rem;
+    }
+    .lead { color: #5f5358; max-width: 42em; margin-bottom: 2rem; }
+    .grid { display: grid; gap: 1rem; }
+    article {
+      display: grid;
+      grid-template-columns: 6.5rem 1fr auto;
+      gap: 1rem;
+      align-items: start;
+      background: #fff;
+      padding: 1.2rem 1.3rem;
+      border-radius: 1.1rem;
+      border: 1px solid #eadfd6;
+    }
+    .no {
+      font-family: "Shippori Mincho", serif;
+      font-size: 1.8rem;
+      color: var(--aka);
+      line-height: 1;
+    }
+    h2 { font-size: 1.2rem; margin-bottom: .25rem; }
+    p { color: #5f5358; font-size: .95rem; }
+    .go {
+      align-self: center;
+      background: var(--aka);
+      color: #fff;
+      text-decoration: none;
+      padding: .6rem 1rem;
+      border-radius: 999px;
+      white-space: nowrap;
+      font-size: .9rem;
+    }
+    .note {
+      margin-top: 2rem;
+      font-size: .88rem;
+      color: #6a5e63;
+    }
+    @media (max-width: 720px) {
+      article { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <p style="letter-spacing:.2em;color:var(--aka);font-size:.8rem;">HOMEPAGE PATTERNS</p>
+    <h1>國學院駅伝部応援情報<br>ホームページ案 5パターン</h1>
+    <p class="lead">記事・写真はすべてダミーです。見た目の方向だけを選ぶためのサンプルです。各ページ上部のバーで案を切り替えられます。Cloudflare Pages と GitHub の準備は、デザイン決定後に手順をお渡しします。</p>
+    <div class="grid">
+      <article>
+        <div class="no">01</div>
+        <div>
+          <h2>ルックブック</h2>
+          <p>ファッション誌。大きな写真と明朝の見出し。渋谷らしい「おしゃれさ」を一番強く出す案です。</p>
+        </div>
+        <a class="go" href="page-pattern-001.html">見る</a>
+      </article>
+      <article>
+        <div class="no">02</div>
+        <div>
+          <h2>ナイトコース</h2>
+          <p>夜の渋谷。暗い画面に赤紫を光らせるスポーツブランド寄りの案。試合前の高揚感向きです。</p>
+        </div>
+        <a class="go" href="page-pattern-002.html">見る</a>
+      </article>
+      <article>
+        <div class="no">03</div>
+        <div>
+          <h2>ザ・ヒル</h2>
+          <p>余白と文字サイズを優先。年配の家族と一緒に読むことを最優先にした、丘のキャンパスのような案です。</p>
+        </div>
+        <a class="go" href="page-pattern-003.html">見る</a>
+      </article>
+      <article>
+        <div class="no">04</div>
+        <div>
+          <h2>赤紫</h2>
+          <p>左にスクールカラーと伝統、右に今季の情報。大学の記憶と駅伝の今を対比する案です。</p>
+        </div>
+        <a class="go" href="page-pattern-004.html">見る</a>
+      </article>
+      <article>
+        <div class="no">05</div>
+        <div>
+          <h2>クロッシング</h2>
+          <p>News / Datas / Images を大きな入口にした、スマホでも迷いにくい家族ポータル案です。</p>
+        </div>
+        <a class="go" href="page-pattern-005.html">見る</a>
+      </article>
+    </div>
+    <p class="note">共通メニューは News・Datas・Images の3つです。本番の写真・記事はプレースホルダを差し替える想定です。</p>
+  </div>
+</body>
+</html>

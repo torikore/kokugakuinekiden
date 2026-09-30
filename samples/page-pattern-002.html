@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>パターン02 ナイトコース｜國學院駅伝部応援情報</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --aka: #ff2d78;
+      --gold: #e6c37a;
+      --bg: #09080b;
+      --panel: #131117;
+      --line: rgba(255,255,255,.12);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Zen Kaku Gothic New", sans-serif;
+      background: var(--bg);
+      color: #f4f0ea;
+      line-height: 1.7;
+    }
+    a { color: inherit; text-decoration: none; }
+    #news, #datas, #images { scroll-margin-top: 5.5rem; }
+
+    .switcher {
+      position: sticky; top: 0; z-index: 50;
+      display: flex; flex-wrap: wrap; gap: .4rem; align-items: center;
+      padding: .55rem 1.2rem;
+      background: #000; color: #fff;
+      font-size: .72rem; letter-spacing: .08em; border-bottom: 1px solid var(--line);
+    }
+    .switcher b { color: var(--gold); margin-right: .6rem; }
+    .switcher a { padding: .28rem .55rem; border: 1px solid var(--line); border-radius: 999px; }
+    .switcher a.now { background: var(--aka); border-color: var(--aka); color: #fff; }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background:
+        radial-gradient(800px 400px at 80% 20%, rgba(176,23,90,.35), transparent 60%),
+        linear-gradient(180deg, rgba(9,8,11,.25) 0%, rgba(9,8,11,.82) 70%, #09080b 100%),
+        url("https://images.unsplash.com/photo-1542051841857-5f90071e7989?auto=format&fit=crop&w=2000&q=80") center/cover;
+    }
+    .hero::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(transparent, transparent 3px, rgba(0,0,0,.08) 4px);
+      pointer-events: none;
+    }
+    nav {
+      position: absolute; top: 1.4rem; left: 50%; transform: translateX(-50%);
+      display: flex; gap: .45rem;
+      padding: .35rem;
+      background: rgba(9,8,11,.55);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      backdrop-filter: blur(12px);
+      z-index: 2;
+    }
+    nav a {
+      padding: .45rem 1rem;
+      font-size: .78rem; letter-spacing: .18em;
+      border-radius: 999px;
+    }
+    nav a:hover { background: var(--aka); }
+
+    .hero__inner { position: relative; z-index: 1; text-align: center; padding: 6rem 1.2rem 4rem; }
+    .hero__inner .tag {
+      display: inline-block;
+      border: 1px solid var(--aka);
+      color: #fff;
+      background: rgba(9,8,11,.55);
+      backdrop-filter: blur(8px);
+      padding: .25rem .8rem;
+      font-size: .72rem; letter-spacing: .28em;
+      margin-bottom: 1.2rem;
+    }
+    h1 {
+      font-family: "Oswald", sans-serif;
+      font-size: clamp(3.2rem, 12vw, 9rem);
+      line-height: .88;
+      letter-spacing: .06em;
+      font-weight: 600;
+    }
+    h1 span { display: block; color: var(--aka); }
+    .jp {
+      margin-top: 1.2rem;
+      font-size: clamp(1.1rem, 2.4vw, 1.6rem);
+      letter-spacing: .28em;
+    }
+    .hero__meta {
+      margin-top: 2rem;
+      display: flex; justify-content: center; gap: 2rem;
+      font-size: .8rem; color: #c9c1c4;
+    }
+    .hero__meta b { display: block; color: var(--gold); font-size: 1.15rem; letter-spacing: .08em; }
+
+    main { width: min(1120px, calc(100% - 2rem)); margin: -4rem auto 4rem; position: relative; z-index: 2; }
+
+    .board {
+      display: grid; grid-template-columns: 1.3fr .7fr; gap: 1rem;
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      padding: 1.4rem;
+    }
+    .kicker {
+      color: var(--aka); letter-spacing: .28em; font-size: .72rem; margin-bottom: .6rem;
+    }
+    h2 { font-size: 1.35rem; letter-spacing: .12em; margin-bottom: 1rem; }
+
+    .news-item {
+      display: grid; grid-template-columns: 6.5rem 1fr; gap: 1rem;
+      padding: .9rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .news-item time { color: var(--gold); font-family: "Oswald", sans-serif; letter-spacing: .08em; }
+    .led {
+      font-family: "Oswald", sans-serif;
+      font-size: 3.2rem; line-height: 1; color: var(--aka);
+    }
+    .led small { display: block; font-size: .72rem; color: #aaa; letter-spacing: .16em; margin-top: .4rem; }
+
+    .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+    .tile {
+      min-height: 220px;
+      border: 1px solid var(--line);
+      background-size: cover; background-position: center;
+      position: relative;
+    }
+    .tile:nth-child(1) { background-image: linear-gradient(transparent, #09080b), url("https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=900&q=80"); }
+    .tile:nth-child(2) { background-image: linear-gradient(transparent, #09080b), url("https://images.unsplash.com/photo-1513593771513-7b58b6c4af38?auto=format&fit=crop&w=900&q=80"); }
+    .tile:nth-child(3) { background-image: linear-gradient(transparent, #09080b), url("https://images.unsplash.com/photo-1552674605-db8be87c54eb?auto=format&fit=crop&w=900&q=80"); }
+    .tile span { position: absolute; left: .8rem; bottom: .8rem; letter-spacing: .14em; font-size: .78rem; }
+
+    table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+    th, td { padding: .45rem 0; border-bottom: 1px solid var(--line); text-align: left; }
+    th { color: #958a90; font-weight: 500; font-size: .72rem; letter-spacing: .12em; }
+
+    footer {
+      width: min(1120px, calc(100% - 2rem));
+      margin: 0 auto 2rem;
+      color: #8a8086; font-size: .75rem;
+      display: flex; justify-content: space-between;
+    }
+
+    @media (max-width: 860px) {
+      nav { left: 1rem; right: 1rem; transform: none; width: auto; justify-content: center; }
+      .board, .grid3, .news-item { grid-template-columns: 1fr; }
+      .hero__meta { flex-direction: column; gap: .6rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="switcher">
+    <b>ホームページ案</b>
+    <a href="page-pattern-001.html">01 ルックブック</a>
+    <a class="now" href="page-pattern-002.html">02 ナイトコース</a>
+    <a href="page-pattern-003.html">03 ザ・ヒル</a>
+    <a href="page-pattern-004.html">04 赤紫</a>
+    <a href="page-pattern-005.html">05 クロッシング</a>
+    <a href="index.html">一覧へ</a>
+  </div>
+
+  <section class="hero">
+    <nav>
+      <a href="#news">NEWS</a>
+      <a href="#datas">DATAS</a>
+      <a href="#images">IMAGES</a>
+    </nav>
+    <div class="hero__inner">
+      <p class="tag">NIGHT COURSE / SHIBUYA</p>
+      <h1>KOKUGAKUIN<span>EKIDEN</span></h1>
+      <p class="jp">夜の渋谷から、走る季節を見る</p>
+      <div class="hero__meta">
+        <div>NEXT RACE<b>IZUMO 2026</b></div>
+        <div>COUNTDOWN<b>13 DAYS</b></div>
+        <div>ARCHIVE<b>FAMILY</b></div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <div class="board" id="news">
+      <section class="panel">
+        <p class="kicker">NEWS</p>
+        <h2>最新ニュース</h2>
+        <div class="news-item"><time>09.28</time><div><strong>出雲駅伝まであと2週間。合宿最終週の空気</strong><p>サンプル記事。シネマティックな暗がりに、見出しだけを浮かべます。</p></div></div>
+        <div class="news-item"><time>09.25</time><div><strong>学連記録会 10000m の結果メモ</strong><p>数字が主役になるニュースは、日付を大きくします。</p></div></div>
+        <div class="news-item"><time>09.20</time><div><strong>主将インタビュー「今年の色は粘り」</strong><p>夜の画面でも読みやすいコントラストを優先しています。</p></div></div>
+      </section>
+      <aside class="panel" id="datas">
+        <p class="kicker">DATAS</p>
+        <h2>出雲 予想</h2>
+        <p class="led">23:10<small>1区 目安タイム（ダミー）</small></p>
+        <table>
+          <tr><th>区</th><th>予想</th><th>目安</th></tr>
+          <tr><td>1</td><td>選手A</td><td>23:10</td></tr>
+          <tr><td>2</td><td>選手B</td><td>16:20</td></tr>
+          <tr><td>3</td><td>選手C</td><td>24:40</td></tr>
+          <tr><td>6</td><td>選手F</td><td>30:20</td></tr>
+        </table>
+      </aside>
+    </div>
+
+    <section class="panel" style="margin-top:1rem;" id="images">
+      <p class="kicker">IMAGES</p>
+      <h2>写真と映像</h2>
+      <div class="grid3">
+        <div class="tile"><span>夏合宿・朝</span></div>
+        <div class="tile"><span>ロードワーク</span></div>
+        <div class="tile"><span>トラック</span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>非公式の家族向け応援アーカイブ案です。写真・記事はプレースホルダです。</p>
+    <p>PATTERN 02 NIGHT COURSE</p>
+  </footer>
+</body>
+</html>

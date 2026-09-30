@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>パターン05 クロッシング｜國學院駅伝部応援情報</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --aka: #c2185b;
+      --aka-soft: #fde8f0;
+      --ink: #1b1520;
+      --paper: #fff7f2;
+      --card: #ffffff;
+      --muted: #6d6270;
+      --line: #f0e2dc;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Zen Maru Gothic", sans-serif;
+      background:
+        radial-gradient(900px 400px at 0% 0%, #ffe3c4, transparent 50%),
+        radial-gradient(700px 400px at 100% 10%, #f8cfe0, transparent 46%),
+        var(--paper);
+      color: var(--ink);
+      line-height: 1.7;
+    }
+    a { color: inherit; text-decoration: none; }
+    #news, #datas, #images { scroll-margin-top: 5.5rem; }
+
+    .switcher {
+      position: sticky; top: 0; z-index: 50;
+      display: flex; flex-wrap: wrap; gap: .4rem; align-items: center;
+      padding: .55rem 1.2rem;
+      background: var(--ink); color: #fff;
+      font-size: .72rem; letter-spacing: .08em;
+    }
+    .switcher b { color: #ffd08a; margin-right: .6rem; }
+    .switcher a { padding: .28rem .55rem; border: 1px solid rgba(255,255,255,.25); border-radius: 999px; }
+    .switcher a.now { background: var(--aka); border-color: var(--aka); }
+
+    .app { width: min(1080px, calc(100% - 1.6rem)); margin: 0 auto; padding: 1.4rem 0 5.5rem; }
+
+    header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      gap: 1rem; margin: 1rem 0 1.4rem;
+    }
+    .brand small { display: block; color: var(--aka); font-weight: 700; letter-spacing: .12em; }
+    .brand h1 {
+      font-family: "Syne", sans-serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      line-height: 1.15;
+    }
+    .brand h1 span { display: block; font-family: "Zen Maru Gothic", sans-serif; font-size: .48em; font-weight: 700; margin-top: .25rem; }
+    .now {
+      background: var(--card);
+      border-radius: 1.4rem;
+      padding: .9rem 1.1rem;
+      box-shadow: 0 10px 30px rgba(80, 20, 40, .06);
+      min-width: 180px;
+    }
+    .now b { display: block; font-size: 1.3rem; }
+
+    .gates {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .gate {
+      background: var(--card);
+      border-radius: 1.8rem;
+      padding: 1.3rem 1.2rem 1.1rem;
+      min-height: 210px;
+      display: flex; flex-direction: column; justify-content: space-between;
+      box-shadow: 0 16px 40px rgba(80, 20, 40, .07);
+      border: 2px solid transparent;
+    }
+    .gate:hover { border-color: var(--aka); transform: translateY(-2px); transition: .2s; }
+    .gate .no {
+      font-family: "Syne", sans-serif;
+      font-size: 2rem; color: var(--aka);
+    }
+    .gate h2 { font-size: 1.7rem; }
+    .gate p { color: var(--muted); margin-top: .4rem; }
+    .gate:nth-child(1) { background: linear-gradient(180deg, #fff, var(--aka-soft)); }
+    .gate:nth-child(2) { background: linear-gradient(180deg, #fff, #fff1d8); }
+    .gate:nth-child(3) { background: linear-gradient(180deg, #fff, #ece7ff); }
+
+    .panel {
+      margin-top: 1.2rem;
+      background: var(--card);
+      border-radius: 1.8rem;
+      padding: 1.3rem;
+      box-shadow: 0 10px 30px rgba(80, 20, 40, .05);
+    }
+    .panel h3 { font-size: 1.15rem; margin-bottom: .8rem; }
+
+    .feed { display: grid; gap: .7rem; }
+    .feed a {
+      display: grid;
+      grid-template-columns: 5.6rem 1fr auto;
+      gap: .8rem; align-items: center;
+      padding: .75rem .8rem;
+      background: #fffaf7;
+      border-radius: 1.1rem;
+      border: 1px solid var(--line);
+    }
+    .feed time { color: var(--aka); font-weight: 700; font-size: .9rem; }
+    .chev { color: var(--muted); }
+
+    table { width: 100%; border-collapse: collapse; }
+    th, td { text-align: left; padding: .5rem 0; border-bottom: 1px solid var(--line); }
+    th { color: var(--muted); font-size: .8rem; }
+
+    .thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: .6rem; }
+    .thumbs div {
+      aspect-ratio: 1; border-radius: 1.1rem;
+      background: #ddd center/cover;
+    }
+    .thumbs div:nth-child(1) { background-image: url("https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=700&q=80"); }
+    .thumbs div:nth-child(2) { background-image: url("https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=700&q=80"); }
+    .thumbs div:nth-child(3) { background-image: url("https://images.unsplash.com/photo-1552674605-db8be87c54eb?auto=format&fit=crop&w=700&q=80"); }
+    .thumbs div:nth-child(4) { background-image: url("https://images.unsplash.com/photo-1542051841857-5f90071e7989?auto=format&fit=crop&w=700&q=80"); }
+
+    .dock {
+      position: fixed; left: 50%; bottom: .8rem; transform: translateX(-50%);
+      display: flex; flex-wrap: nowrap; gap: .25rem;
+      width: max-content;
+      max-width: calc(100vw - 1.2rem);
+      background: rgba(27,21,32,.92);
+      color: #fff;
+      padding: .35rem;
+      border-radius: 999px;
+      z-index: 40;
+    }
+    .dock a {
+      padding: .5rem .85rem;
+      border-radius: 999px;
+      font-size: .85rem;
+      white-space: nowrap;
+      flex: 0 0 auto;
+    }
+    .dock a:hover, .dock a.on { background: var(--aka); }
+
+    footer { margin-top: 1.2rem; color: var(--muted); font-size: .82rem; }
+
+    @media (min-width: 801px) {
+      .dock { display: none; }
+      .app { padding-bottom: 2.4rem; }
+    }
+    @media (max-width: 800px) {
+      header, .gates, .feed a, .thumbs { grid-template-columns: 1fr; }
+      header { flex-direction: column; align-items: stretch; }
+      .gates { grid-template-columns: 1fr; }
+      .thumbs { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="switcher">
+    <b>ホームページ案</b>
+    <a href="page-pattern-001.html">01 ルックブック</a>
+    <a href="page-pattern-002.html">02 ナイトコース</a>
+    <a href="page-pattern-003.html">03 ザ・ヒル</a>
+    <a href="page-pattern-004.html">04 赤紫</a>
+    <a class="now" href="page-pattern-005.html">05 クロッシング</a>
+    <a href="index.html">一覧へ</a>
+  </div>
+
+  <div class="app">
+    <header>
+      <div class="brand">
+        <small>SHIBUYA CROSSING</small>
+        <h1>KOKUGAKUIN<span>國學院駅伝部応援情報</span></h1>
+      </div>
+      <div class="now">
+        いまの焦点
+        <b>出雲まで13日</b>
+      </div>
+    </header>
+
+    <section class="gates">
+      <a class="gate" href="#news">
+        <div>
+          <div class="no">01</div>
+          <h2>News</h2>
+          <p>ウェブから集めた最新ニュース。大きな入口なので、家族のだれでも迷いません。</p>
+        </div>
+      </a>
+      <a class="gate" href="#datas">
+        <div>
+          <div class="no">02</div>
+          <h2>Datas</h2>
+          <p>テーマごとにまとめた表。予想エントリーや歴代ベスト10など。</p>
+        </div>
+      </a>
+      <a class="gate" href="#images">
+        <div>
+          <div class="no">03</div>
+          <h2>Images</h2>
+          <p>写真と動画の棚。渋谷の交差点のように、行きたい場所を選ぶだけです。</p>
+        </div>
+      </a>
+    </section>
+
+    <section class="panel" id="news">
+      <h3>今日のニュース</h3>
+      <div class="feed">
+        <a href="#"><time>09.28</time><span>出雲駅伝まであと2週間。合宿最終週の空気</span><span class="chev">→</span></a>
+        <a href="#"><time>09.25</time><span>学連記録会 10000m の結果メモ</span><span class="chev">→</span></a>
+        <a href="#"><time>09.20</time><span>主将インタビュー「今年の色は粘り」</span><span class="chev">→</span></a>
+      </div>
+    </section>
+
+    <section class="panel" id="datas">
+      <h3>Datas｜出雲駅伝2026 予想エントリー（ダミー）</h3>
+      <table>
+        <tr><th>区</th><th>予想</th><th>目安</th></tr>
+        <tr><td>1区</td><td>選手A</td><td>23:10</td></tr>
+        <tr><td>2区</td><td>選手B</td><td>16:20</td></tr>
+        <tr><td>3区</td><td>選手C</td><td>24:40</td></tr>
+        <tr><td>6区</td><td>選手F</td><td>30:20</td></tr>
+      </table>
+    </section>
+
+    <section class="panel" id="images">
+      <h3>Images</h3>
+      <div class="thumbs">
+        <div></div><div></div><div></div><div></div>
+      </div>
+    </section>
+
+    <footer>非公式の家族向け応援アーカイブ案です。写真・記事はプレースホルダです。　PATTERN 05 CROSSING</footer>
+  </div>
+
+  <nav class="dock">
+    <a class="on" href="#">ホーム</a>
+    <a href="#news">News</a>
+    <a href="#datas">Datas</a>
+    <a href="#images">Images</a>
+  </nav>
+</body>
+</html>

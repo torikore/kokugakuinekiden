@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>パターン04 赤紫｜國學院駅伝部応援情報</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Shippori+Mincho:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --aka: #8e1548;
+      --aka-bright: #c41e6a;
+      --gold: #d4b872;
+      --ink: #161014;
+      --paper: #f7f1ea;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Zen Kaku Gothic New", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.75;
+    }
+    a { color: inherit; text-decoration: none; }
+    #news, #datas, #images { scroll-margin-top: 5.5rem; }
+
+    .switcher {
+      position: sticky; top: 0; z-index: 60;
+      display: flex; flex-wrap: wrap; gap: .4rem; align-items: center;
+      padding: .55rem 1.2rem;
+      background: #11080c; color: #fff;
+      font-size: .72rem; letter-spacing: .08em;
+    }
+    .switcher b { color: var(--gold); margin-right: .6rem; }
+    .switcher a { padding: .28rem .55rem; border: 1px solid rgba(255,255,255,.25); border-radius: 999px; }
+    .switcher a.now { background: var(--aka-bright); border-color: var(--aka-bright); }
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(280px, 38%) 1fr;
+      min-height: 100svh;
+    }
+    .left {
+      background:
+        radial-gradient(circle at 20% 20%, rgba(212,184,114,.22), transparent 40%),
+        var(--aka);
+      color: #fff;
+      padding: 2.4rem 2rem 3rem;
+      position: sticky; top: 42px; height: calc(100svh - 42px);
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .left .en {
+      font-family: "Cinzel", serif;
+      letter-spacing: .32em; font-size: .72rem; color: var(--gold);
+    }
+    .left h1 {
+      font-family: "Shippori Mincho", serif;
+      font-size: clamp(2rem, 4vw, 3.1rem);
+      font-weight: 800;
+      line-height: 1.35;
+      margin: 1rem 0;
+    }
+    .left h1 small {
+      display: block;
+      font-size: .42em;
+      font-weight: 500;
+      letter-spacing: .18em;
+      margin-top: .6rem;
+      color: #f3c9d8;
+    }
+    .vtext {
+      writing-mode: vertical-rl;
+      letter-spacing: .45em;
+      font-family: "Shippori Mincho", serif;
+      font-size: 1.05rem;
+      align-self: flex-end;
+    }
+    nav a {
+      display: block;
+      padding: .55rem 0;
+      border-bottom: 1px solid rgba(255,255,255,.2);
+      letter-spacing: .18em;
+    }
+    nav a span { color: var(--gold); margin-right: .6rem; font-family: "Cinzel", serif; }
+
+    .right { padding: 2.2rem clamp(1.2rem, 4vw, 3rem) 3rem; }
+    .hero-photo {
+      height: 42vh;
+      background:
+        linear-gradient(90deg, rgba(142,21,72,.35), transparent 40%),
+        url("https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=1600&q=80") center/cover;
+      margin-bottom: 2rem;
+    }
+    .lead {
+      font-family: "Shippori Mincho", serif;
+      font-size: 1.35rem;
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      font-family: "Shippori Mincho", serif;
+      font-size: 1.4rem;
+      margin: 1.8rem 0 .8rem;
+      display: flex; align-items: baseline; gap: .7rem;
+    }
+    h2 i {
+      font-family: "Cinzel", serif;
+      font-style: normal; color: var(--aka);
+      font-size: .7rem; letter-spacing: .2em;
+    }
+
+    .news article {
+      display: grid;
+      grid-template-columns: 6.5rem 1fr;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid #e4d7cc;
+    }
+    .news time { color: var(--aka); font-family: "Cinzel", serif; letter-spacing: .08em; }
+
+    table { width: 100%; border-collapse: collapse; }
+    th, td { text-align: left; padding: .45rem 0; border-bottom: 1px solid #e4d7cc; }
+    th { color: #7a6a62; font-size: .75rem; font-weight: 500; }
+
+    .mosaic { display: grid; grid-template-columns: 2fr 1fr; grid-template-rows: 160px 160px; gap: .6rem; }
+    .mosaic div { background: #ccc center/cover; }
+    .mosaic div:nth-child(1) { grid-row: 1 / 3; background-image: url("https://images.unsplash.com/photo-1542051841857-5f90071e7989?auto=format&fit=crop&w=1000&q=80"); }
+    .mosaic div:nth-child(2) { background-image: url("https://images.unsplash.com/photo-1552674605-db8be87c54eb?auto=format&fit=crop&w=700&q=80"); }
+    .mosaic div:nth-child(3) { background-image: url("https://images.unsplash.com/photo-1571008887538-b36bb32f4571?auto=format&fit=crop&w=700&q=80"); }
+
+    footer { margin-top: 2.4rem; color: #7a6a62; font-size: .8rem; }
+
+    @media (max-width: 860px) {
+      .split { grid-template-columns: 1fr; }
+      .left { position: relative; top: 0; height: auto; }
+      .vtext { writing-mode: horizontal-tb; letter-spacing: .16em; margin-top: 1rem; }
+      .news article { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="switcher">
+    <b>ホームページ案</b>
+    <a href="page-pattern-001.html">01 ルックブック</a>
+    <a href="page-pattern-002.html">02 ナイトコース</a>
+    <a href="page-pattern-003.html">03 ザ・ヒル</a>
+    <a class="now" href="page-pattern-004.html">04 赤紫</a>
+    <a href="page-pattern-005.html">05 クロッシング</a>
+    <a href="index.html">一覧へ</a>
+  </div>
+
+  <div class="split">
+    <aside class="left">
+      <div>
+        <p class="en">AKAMURASAKI</p>
+        <h1>國學院駅伝部<small>応援情報 / 家族のための記録</small></h1>
+        <nav>
+          <a href="#news"><span>01</span>NEWS</a>
+          <a href="#datas"><span>02</span>DATAS</a>
+          <a href="#images"><span>03</span>IMAGES</a>
+        </nav>
+      </div>
+      <p class="vtext">伝統を左に、現代を右に。</p>
+    </aside>
+
+    <main class="right">
+      <div class="hero-photo"></div>
+      <p class="lead">スクールカラーの赤紫と、校旗の金。渋谷の街の写真を対にして、大学の記憶と今季の走りを同じ画面に置きます。</p>
+
+      <section id="news">
+        <h2>最新ニュース <i>NEWS</i></h2>
+        <div class="news">
+          <article><time>09.28</time><div><strong>出雲駅伝まであと2週間。合宿最終週の空気</strong><p>サンプル。左の赤紫は固定、右だけが季節で更新されていくイメージです。</p></div></article>
+          <article><time>09.25</time><div><strong>学連記録会 10000m の結果メモ</strong></div></article>
+          <article><time>09.20</time><div><strong>主将インタビュー「今年の色は粘り」</strong></div></article>
+        </div>
+      </section>
+
+      <section id="datas">
+        <h2>出雲駅伝2026 予想 <i>DATAS</i></h2>
+        <table>
+          <tr><th>区</th><th>予想（ダミー）</th><th>目安</th></tr>
+          <tr><td>一</td><td>選手A</td><td>23:10</td></tr>
+          <tr><td>二</td><td>選手B</td><td>16:20</td></tr>
+          <tr><td>三</td><td>選手C</td><td>24:40</td></tr>
+          <tr><td>四</td><td>選手D</td><td>18:10</td></tr>
+          <tr><td>五</td><td>選手E</td><td>18:50</td></tr>
+          <tr><td>六</td><td>選手F</td><td>30:20</td></tr>
+        </table>
+      </section>
+
+      <section id="images">
+        <h2>写真 <i>IMAGES</i></h2>
+        <div class="mosaic">
+          <div></div><div></div><div></div>
+        </div>
+      </section>
+
+      <footer>
+        非公式の家族向け応援アーカイブ案です。写真・記事はプレースホルダです。　PATTERN 04 SEKISHI
+      </footer>
+    </main>
+  </div>
+</body>
+</html>

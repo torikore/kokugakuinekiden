@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>パターン03 ザ・ヒル｜國學院駅伝部応援情報</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,500&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --aka: #9c1b4d;
+      --gold: #b0893e;
+      --ink: #222018;
+      --paper: #faf8f3;
+      --line: #ddd6c8;
+      --muted: #6b6458;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Noto Sans JP", sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      font-size: 17px;
+      line-height: 1.85;
+    }
+    a { color: var(--aka); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    #news, #datas, #images { scroll-margin-top: 5.5rem; }
+
+    .switcher {
+      position: sticky; top: 0; z-index: 50;
+      display: flex; flex-wrap: wrap; gap: .4rem; align-items: center;
+      padding: .55rem 1.2rem;
+      background: var(--ink); color: #fff;
+      font-size: .72rem; letter-spacing: .08em;
+    }
+    .switcher b { color: #e6c37a; margin-right: .6rem; }
+    .switcher a { color: #fff; padding: .28rem .55rem; border: 1px solid rgba(255,255,255,.25); border-radius: 999px; text-decoration: none; }
+    .switcher a.now { background: var(--aka); border-color: var(--aka); }
+
+    .page { width: min(980px, calc(100% - 2.4rem)); margin: 0 auto; padding: 2.4rem 0 4rem; }
+
+    header { padding-bottom: 2rem; border-bottom: 1px solid var(--line); }
+    .brand-en {
+      font-family: "Cormorant Garamond", serif;
+      letter-spacing: .32em;
+      font-size: .8rem;
+      color: var(--gold);
+    }
+    h1 {
+      font-family: "Noto Serif JP", serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700;
+      margin: .4rem 0 1.2rem;
+      letter-spacing: .06em;
+    }
+    nav { display: flex; gap: 1.6rem; font-size: .95rem; }
+    nav a { color: var(--ink); letter-spacing: .12em; }
+
+    .intro {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2.4rem;
+      padding: 2.4rem 0 2.8rem;
+    }
+    .intro h2 {
+      font-family: "Noto Serif JP", serif;
+      font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+      line-height: 1.5;
+      font-weight: 500;
+    }
+    .intro p { color: var(--muted); margin-top: 1rem; }
+    .intro aside {
+      border-left: 1px solid var(--gold);
+      padding-left: 1.2rem;
+      font-size: .92rem;
+      color: var(--muted);
+    }
+    .intro aside strong { display: block; color: var(--ink); margin-bottom: .3rem; }
+
+    section { padding: 2rem 0; border-top: 1px solid var(--line); }
+    .label {
+      font-size: .75rem; letter-spacing: .28em; color: var(--gold);
+      margin-bottom: .6rem;
+    }
+    h3 {
+      font-family: "Noto Serif JP", serif;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .news-list { list-style: none; }
+    .news-list li {
+      display: grid;
+      grid-template-columns: 8.2rem 1fr;
+      gap: 1.2rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .news-list time { color: var(--muted); }
+    .news-list a { color: var(--ink); font-weight: 500; }
+    .news-list a:hover { color: var(--aka); }
+
+    table { width: 100%; border-collapse: collapse; }
+    th, td { text-align: left; padding: .55rem 0; border-bottom: 1px solid var(--line); }
+    th { color: var(--muted); font-weight: 500; font-size: .8rem; }
+
+    .photos {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: .7rem;
+    }
+    .photos div {
+      aspect-ratio: 1;
+      background: #ddd center/cover;
+    }
+    .photos div:nth-child(1) { background-image: url("https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=700&q=80"); }
+    .photos div:nth-child(2) { background-image: url("https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=700&q=80"); }
+    .photos div:nth-child(3) { background-image: url("https://images.unsplash.com/photo-1552674605-db8be87c54eb?auto=format&fit=crop&w=700&q=80"); }
+    .photos div:nth-child(4) { background-image: url("https://images.unsplash.com/photo-1571008887538-b36bb32f4571?auto=format&fit=crop&w=700&q=80"); }
+
+    footer {
+      margin-top: 2rem; padding-top: 1.2rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted); font-size: .85rem;
+      display: flex; justify-content: space-between; gap: 1rem;
+    }
+
+    @media (max-width: 760px) {
+      .intro, .news-list li, .photos { grid-template-columns: 1fr; }
+      .intro aside { border-left: 0; border-top: 1px solid var(--gold); padding: 1rem 0 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="switcher">
+    <b>ホームページ案</b>
+    <a href="page-pattern-001.html">01 ルックブック</a>
+    <a href="page-pattern-002.html">02 ナイトコース</a>
+    <a class="now" href="page-pattern-003.html">03 ザ・ヒル</a>
+    <a href="page-pattern-004.html">04 赤紫</a>
+    <a href="page-pattern-005.html">05 クロッシング</a>
+    <a href="index.html">一覧へ</a>
+  </div>
+
+  <div class="page">
+    <header>
+      <p class="brand-en">KOKUGAKUIN EKIDEN · SHIBUYA HILL</p>
+      <h1>國學院駅伝部応援情報</h1>
+      <nav>
+        <a href="#news">News</a>
+        <a href="#datas">Datas</a>
+        <a href="#images">Images</a>
+      </nav>
+    </header>
+
+    <div class="intro">
+      <div>
+        <h2>静かな余白で、<br>家族が同じページを読めるように。</h2>
+        <p>渋谷キャンパスの「丘」のように、少し高い場所から季節を見渡す案です。文字を大きく、装飾を少なく、年配の方でも疲れにくいことを優先しています。</p>
+      </div>
+      <aside>
+        <strong>今日の目印</strong>
+        出雲駅伝2026まで 13日。<br>
+        写真・記事はすべてサンプルです。
+      </aside>
+    </div>
+
+    <section id="news">
+      <p class="label">01 NEWS</p>
+      <h3>最新ニュース</h3>
+      <ul class="news-list">
+        <li><time datetime="2026-09-28">2026年9月28日</time><div><a href="#">出雲駅伝まであと2週間。合宿最終週の空気</a><p>ウェブ上の最新情報を短い文章にまとめる枠です。</p></div></li>
+        <li><time datetime="2026-09-25">2026年9月25日</time><div><a href="#">学連記録会 10000m の結果メモ</a><p>記録は Datas 側の表と相互にリンクします。</p></div></li>
+        <li><time datetime="2026-09-20">2026年9月20日</time><div><a href="#">主将インタビュー「今年の色は粘り」</a><p>長い記事も、まずは日付と見出しだけで辿れます。</p></div></li>
+        <li><time datetime="2026-09-12">2026年9月12日</time><div><a href="#">夏合宿を終えて ― 強化のポイント</a><p>公開情報の要約です。</p></div></li>
+      </ul>
+    </section>
+
+    <section id="datas">
+      <p class="label">02 DATAS</p>
+      <h3>出雲駅伝2026 予想エントリー</h3>
+      <table>
+        <thead>
+          <tr><th>区間</th><th>予想メンバー（ダミー）</th><th>目安タイム</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1区</td><td>選手A</td><td>23分10秒</td></tr>
+          <tr><td>2区</td><td>選手B</td><td>16分20秒</td></tr>
+          <tr><td>3区</td><td>選手C</td><td>24分40秒</td></tr>
+          <tr><td>4区</td><td>選手D</td><td>18分10秒</td></tr>
+          <tr><td>5区</td><td>選手E</td><td>18分50秒</td></tr>
+          <tr><td>6区</td><td>選手F</td><td>30分20秒</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:1rem;color:var(--muted);font-size:.92rem;">ほかのテーマ（歴代ベスト10など）も、同じ静かな表の形式で増やします。</p>
+    </section>
+
+    <section id="images">
+      <p class="label">03 IMAGES</p>
+      <h3>写真</h3>
+      <div class="photos">
+        <div title="渋谷"></div>
+        <div title="練習"></div>
+        <div title="トラック"></div>
+        <div title="フィニッシュ"></div>
+      </div>
+    </section>
+
+    <footer>
+      <p>非公式の家族向け応援アーカイブ案です。写真・記事はプレースホルダです。</p>
+      <p>PATTERN 03 THE HILL</p>
+    </footer>
+  </div>
+</body>
+</html>
