@@ -167,6 +167,13 @@ h1.display span {
   backdrop-filter: blur(10px);
   min-width: 16rem;
 }
+a.meta-block {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 .meta-block .label {
   display: block;
   font-size: .72rem;
@@ -243,8 +250,8 @@ a.meta-block:hover strong { color: #fff; }
 
 #runner {
   display: block;
-  width: 150px;
-  height: 84px;
+  width: 180px;
+  height: 100px;
   flex: 0 0 auto;
 }
 
@@ -446,5 +453,5 @@ footer {
   .tag { letter-spacing: .16em; }
   .countdown .num { font-size: 1.5rem; }
   .countdown .unit { min-width: 2rem; }
-  #runner { width: 110px; height: 62px; }
+  #runner { width: 140px; height: 78px; }
 }
