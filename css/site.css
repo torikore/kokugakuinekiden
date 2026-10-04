@@ -324,6 +324,12 @@ h2 {
   margin-bottom: .85rem;
   line-height: 1.45;
 }
+.news-post h3 {
+  font-size: .95rem;
+  letter-spacing: .1em;
+  color: var(--gold);
+  margin: 1.2rem 0 .5rem;
+}
 .news-post p {
   margin: .65rem 0;
 }
