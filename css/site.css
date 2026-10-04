@@ -324,11 +324,41 @@ h2 {
   margin-bottom: .85rem;
   line-height: 1.45;
 }
-.news-post h3 {
+.news-post h3,
+.panel h3 {
   font-size: .95rem;
   letter-spacing: .1em;
   color: var(--gold);
   margin: 1.2rem 0 .5rem;
+}
+.table-scroll {
+  overflow-x: auto;
+  margin: .8rem 0;
+}
+.pred-now,
+.pred-votes,
+.pred-matrix {
+  width: min(100%, 44rem);
+  margin: .8rem 0 1rem;
+}
+.pred-now--compact {
+  width: 100%;
+  font-size: .82rem;
+}
+.pred-now td:nth-child(n + 4),
+.pred-votes td:nth-child(3) {
+  font-family: "Oswald", sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+.pred-matrix {
+  width: max-content;
+  min-width: 100%;
+  font-size: .82rem;
+}
+.pred-matrix th,
+.pred-matrix td {
+  padding-right: .75rem;
+  white-space: nowrap;
 }
 .news-post p {
   margin: .65rem 0;
@@ -409,7 +439,7 @@ th {
 .lede {
   color: var(--muted);
   font-size: .92rem;
-  margin: -.4rem 0 1rem;
+  margin: 0 0 1rem;
 }
 .pb-table {
   width: min(100%, 40rem);
