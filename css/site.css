@@ -418,6 +418,15 @@ h2 {
   letter-spacing: .14em;
   font-size: .78rem;
 }
+.tile--saiko-entry {
+  background-image: linear-gradient(transparent, #09080b), url("../img/gallery/2026-09-18-saiko-entry.jpg");
+}
+.tile--saiko-meeting {
+  background-image: linear-gradient(transparent, #09080b), url("../img/gallery/2026-08-06-saiko-meeting.jpg");
+}
+.tile--izumo-win {
+  background-image: linear-gradient(transparent, #09080b), url("../img/gallery/2025-10-13-izumo-win.jpg");
+}
 
 table {
   width: 100%;
@@ -556,6 +565,55 @@ footer {
   bottom: .8rem;
   letter-spacing: .12em;
 }
+.shot {
+  margin: 0 0 1rem;
+  border: 1px solid var(--line);
+  background: #111;
+}
+.shot img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: center 20%;
+}
+.shot--hero img {
+  aspect-ratio: 16 / 9;
+  object-position: center 30%;
+}
+.shot figcaption {
+  padding: .85rem 1rem 1.05rem;
+}
+.shot time {
+  display: block;
+  font-family: "Oswald", sans-serif;
+  letter-spacing: .14em;
+  color: var(--gold);
+  font-size: .78rem;
+}
+.shot strong {
+  display: block;
+  margin: .2rem 0 .35rem;
+  letter-spacing: .04em;
+}
+.shot figcaption p {
+  color: var(--muted);
+  font-size: .88rem;
+  margin: 0 0 .45rem;
+}
+.shot figcaption a {
+  color: var(--aka);
+  font-size: .8rem;
+  letter-spacing: .06em;
+}
+.shot figcaption a:hover { color: #fff; }
+.shot-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.shot-grid .shot { margin: 0; }
 
 @media (max-width: 860px) {
   .hero .nav,
@@ -567,7 +625,7 @@ footer {
   }
   .nav a, .nav .brand { padding: .4rem .7rem; letter-spacing: .1em; }
   .vlabel { display: none; }
-  .board, .grid3, .news-item, .gallery { grid-template-columns: 1fr; }
+  .board, .grid3, .news-item, .gallery, .shot-grid { grid-template-columns: 1fr; }
   .hero__meta { flex-direction: column; align-items: stretch; }
   .meta-block { min-width: 0; }
   h1.display {
