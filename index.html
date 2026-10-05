@@ -16,6 +16,23 @@
   <a class="skip" href="#content">本文へ</a>
 
   <section class="hero">
+    <div class="hero__scene" aria-hidden="true">
+      <img class="hero__photo" src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?auto=format&fit=crop&w=2000&q=80" alt="">
+      <div class="hero__veil"></div>
+      <div class="hero__ripple" data-hero-ripple>
+        <img class="hero__photo hero__photo--warp" src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?auto=format&fit=crop&w=2000&q=80" alt="">
+      </div>
+    </div>
+    <svg class="hero-svg" aria-hidden="true" focusable="false">
+      <filter id="hero-warp" x="-40%" y="-40%" width="180%" height="180%" color-interpolation-filters="sRGB">
+        <feTurbulence type="turbulence" baseFrequency="0.012 0.02" numOctaves="2" seed="4" result="noise">
+          <animate attributeName="baseFrequency" dur="7s" values="0.01 0.016;0.018 0.028;0.01 0.016" repeatCount="indefinite"/>
+        </feTurbulence>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="58" xChannelSelector="R" yChannelSelector="G">
+          <animate attributeName="scale" values="42;70;42" dur="6s" repeatCount="indefinite"/>
+        </feDisplacementMap>
+      </filter>
+    </svg>
     <p class="vlabel">SHIBUYA HILL · NIGHT COURSE</p>
     <nav class="nav" aria-label="メイン">
       <a class="brand" href="./">TOP</a>

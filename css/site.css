@@ -71,15 +71,61 @@ img { max-width: 100%; display: block; }
   display: grid;
   place-items: center;
   overflow: hidden;
+  background: var(--bg);
+}
+.hero__scene {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.hero__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hero__ripple {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: min(32vw, 300px);
+  height: min(24vw, 220px);
+  overflow: hidden;
+  border-radius: 50%;
+  -webkit-mask-image: radial-gradient(closest-side, #000 38%, transparent 100%);
+  mask-image: radial-gradient(closest-side, #000 38%, transparent 100%);
+  will-change: transform;
+}
+.hero__photo--warp {
+  inset: auto;
+  left: 0;
+  top: 0;
+  right: auto;
+  bottom: auto;
+  max-width: none;
+  filter: url("#hero-warp");
+}
+.hero__veil {
+  position: absolute;
+  inset: 0;
   background:
     radial-gradient(900px 420px at 82% 18%, rgba(255, 45, 120, .32), transparent 58%),
-    linear-gradient(180deg, rgba(9, 8, 11, .18) 0%, rgba(9, 8, 11, .78) 62%, #09080b 100%),
-    url("https://images.unsplash.com/photo-1542051841857-5f90071e7989?auto=format&fit=crop&w=2000&q=80") center/cover;
+    linear-gradient(180deg, rgba(9, 8, 11, .18) 0%, rgba(9, 8, 11, .78) 62%, #09080b 100%);
+}
+.hero-svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
 }
 .hero::after {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 1;
   background: repeating-linear-gradient(transparent, transparent 3px, rgba(0, 0, 0, .07) 4px);
   pointer-events: none;
 }
@@ -88,6 +134,7 @@ img { max-width: 100%; display: block; }
   top: 1.4rem;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 5;
 }
 
 .vlabel {
@@ -104,7 +151,7 @@ img { max-width: 100%; display: block; }
 
 .hero__inner {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   text-align: center;
   padding: 6.5rem 1.2rem 4.5rem;
 }
@@ -278,6 +325,7 @@ a.meta-block:hover strong { color: #fff; }
 @media (prefers-reduced-motion: reduce) {
   .countdown .colon { animation: none; }
   .runner-slot__ground { background-position: 0 0 !important; }
+  .hero__ripple { display: none; }
 }
 
 .wrap {
