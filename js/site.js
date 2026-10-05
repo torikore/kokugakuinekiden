@@ -49,3 +49,32 @@
 
   if (root) scheduleCountdown();
 })();
+
+(function () {
+  const slots = Array.from(document.querySelectorAll("[data-runner-slot]"));
+  if (!slots.length) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const FRAME_MS = 250;
+  const start = performance.now();
+
+  function frame(now) {
+    const t = now - start;
+    const on = Math.floor(t / FRAME_MS) % 2;
+    const ground = (t * 0.08) % 36;
+
+    slots.forEach(function (slot) {
+      const imgs = slot.querySelectorAll("[data-body] img");
+      const road = slot.querySelector("[data-ground]");
+      imgs.forEach(function (img, i) {
+        img.classList.toggle("is-on", i === on);
+      });
+      if (road) {
+        road.style.backgroundPosition = (-ground) + "px 0";
+      }
+    });
+    requestAnimationFrame(frame);
+  }
+
+  requestAnimationFrame(frame);
+})();

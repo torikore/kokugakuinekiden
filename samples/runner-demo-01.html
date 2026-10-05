@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DEMO 01｜ランナー｜國學院駅伝部応援情報</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/site.css">
+  <style>
+    .demo-note {
+      position: relative;
+      z-index: 3;
+      width: min(720px, calc(100% - 2rem));
+      margin: 1.2rem auto 0;
+      color: var(--muted);
+      font-size: .88rem;
+      letter-spacing: .04em;
+    }
+    .demo-note strong { color: var(--gold); font-weight: 700; }
+    .runner-slot {
+      position: relative;
+      width: 92px;
+      height: 78px;
+      margin: .45rem auto .15rem;
+      overflow: hidden;
+    }
+    .runner-slot__ground {
+      position: absolute;
+      left: -20%;
+      right: -20%;
+      bottom: 4px;
+      height: 2px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--gold) 0 10px,
+        transparent 10px 18px
+      );
+      opacity: .7;
+    }
+    .runner-slot__body {
+      position: absolute;
+      left: 50%;
+      bottom: 6px;
+      width: 60px;
+      margin-left: -30px;
+      transform-origin: 50% 88%;
+      will-change: transform;
+    }
+    .runner-slot__body img {
+      display: block;
+      width: 60px;
+      height: auto;
+    }
+    .runner-slot--large {
+      width: 220px;
+      height: 180px;
+      margin: 1.2rem auto 0;
+    }
+    .runner-slot--large .runner-slot__body {
+      width: 132px;
+      margin-left: -66px;
+      bottom: 10px;
+    }
+    .runner-slot--large .runner-slot__body img {
+      width: 132px;
+    }
+    .runner-slot--large .runner-slot__ground {
+      bottom: 8px;
+      height: 3px;
+    }
+    .demo-stage {
+      width: min(420px, calc(100% - 2rem));
+      margin: 2rem auto 4rem;
+      padding: 1.1rem 1.2rem 1.4rem;
+      border: 1px solid var(--line);
+      background: rgba(9, 8, 11, .72);
+      text-align: center;
+    }
+    .demo-stage .kicker { margin-bottom: .35rem; }
+    @media (prefers-reduced-motion: reduce) {
+      .runner-slot__ground { background-position: 0 0 !important; }
+    }
+  </style>
+</head>
+<body>
+  <p class="demo-note">
+    <strong>DEMO 01　踏み切り＋路面が流れる</strong><br>
+    いまトップにある金色シルエットはそのまま。JavaScript で上下の踏み切りと、足元の点線が後ろへ流れる動きだけを足しています。棒人間や新しい絵は使っていません。本番の COUNTDOWN にはまだ入れていません。
+  </p>
+
+  <section class="hero" style="min-height: auto;">
+    <div class="hero__inner" style="padding-top: 2.4rem; padding-bottom: 2.4rem;">
+      <p class="tag">DEMO 01 / COUNTDOWN SLOT</p>
+      <div class="hero__meta">
+        <a class="meta-block" href="https://www.izumo-ekiden.jp/" target="_blank" rel="noopener noreferrer">
+          <span class="label">NEXT RACE</span>
+          <strong>IZUMO 2026</strong>
+          <span class="hint">公式サイト ↗</span>
+        </a>
+        <div class="meta-block meta-block--count">
+          <span class="label">COUNTDOWN</span>
+          <div id="countdown" class="countdown" aria-live="off">--</div>
+          <div class="runner-slot" data-runner-slot>
+            <div class="runner-slot__ground" data-ground></div>
+            <div class="runner-slot__body" data-body>
+              <img src="../img/runner-silhouette.png" width="60" height="71" alt="走る人のシルエット">
+            </div>
+          </div>
+          <span class="hint">START 10.12 9:10 JST</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="demo-stage">
+    <p class="kicker">SAME MOTION · LARGER</p>
+    <p class="lede" style="margin-bottom:0">動きを見るための拡大です。中身は上と同じです。</p>
+    <div class="runner-slot runner-slot--large" data-runner-slot>
+      <div class="runner-slot__ground" data-ground></div>
+      <div class="runner-slot__body" data-body>
+        <img src="../img/runner-silhouette.png" width="132" height="156" alt="">
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/site.js"></script>
+  <script>
+    (function () {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+      const slots = Array.from(document.querySelectorAll("[data-runner-slot]"));
+      const CADENCE = 2.65;
+      const start = performance.now();
+
+      function frame(now) {
+        const t = (now - start) / 1000;
+        const wave = Math.sin(t * Math.PI * 2 * CADENCE);
+        const lift = (1 - Math.cos(t * Math.PI * 2 * CADENCE)) * 0.5;
+        const bounce = lift * 7;
+        const lean = wave * 2.4;
+        const squash = 1 - lift * 0.045;
+        const ground = (t * 92) % 36;
+
+        slots.forEach(function (slot) {
+          const body = slot.querySelector("[data-body]");
+          const road = slot.querySelector("[data-ground]");
+          const amp = slot.classList.contains("runner-slot--large") ? 1.8 : 1;
+          if (body) {
+            body.style.transform =
+              "translateY(" + (-bounce * amp) + "px) rotate(" + lean + "deg) scaleY(" + squash + ")";
+          }
+          if (road) {
+            road.style.backgroundPosition = (-ground * amp) + "px 0";
+          }
+        });
+        requestAnimationFrame(frame);
+      }
+
+      requestAnimationFrame(frame);
+    })();
+  </script>
+</body>
+</html>
