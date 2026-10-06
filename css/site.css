@@ -441,6 +441,64 @@ h2 {
   padding-right: .75rem;
   white-space: nowrap;
 }
+.rank-table {
+  width: min(100%, 36rem);
+}
+.rank-table td:nth-child(1),
+.rank-table td:nth-child(3),
+.rank-table td:nth-child(4) {
+  font-family: "Oswald", sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+.rank-table td:nth-child(1) {
+  width: 2.2rem;
+  color: var(--gold);
+}
+.rank-table tr.is-home td:nth-child(1) {
+  color: var(--aka);
+}
+.rank-table td:nth-child(3),
+.rank-table td:nth-child(4) {
+  text-align: right;
+}
+.rank-table--compact {
+  width: 100%;
+  font-size: .82rem;
+}
+.idx-table {
+  width: max-content;
+  min-width: 100%;
+  font-size: .82rem;
+}
+.idx-table th,
+.idx-table td {
+  padding-right: .75rem;
+  white-space: nowrap;
+}
+.idx-table th:nth-child(n + 4),
+.idx-table td:nth-child(n + 4) {
+  text-align: right;
+  font-family: "Oswald", sans-serif;
+  font-variant-numeric: tabular-nums;
+  padding-left: .85rem;
+}
+.idx-table th:nth-child(n + 4) {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+.idx-table td:last-child,
+.idx-table th:last-child {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  text-align: left;
+  font-size: .78rem;
+  color: var(--muted);
+  white-space: normal;
+  min-width: 9.5rem;
+}
+.sec-matrix td:nth-child(n + 2) {
+  font-family: "Oswald", sans-serif;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
 .news-post p {
   margin: .65rem 0;
 }

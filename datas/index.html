@@ -25,7 +25,300 @@
     <p>記録と、いまの区間予想を出典つきで残す</p>
   </header>
   <main class="page-body" id="content">
-    <section class="panel" id="izumo-chuo-order-2026">
+    <section class="panel" id="izumo-ai-rank-2026">
+      <p class="kicker">IZUMO 2026 · AI RANK</p>
+      <h2>出雲駅伝2026 順位予想AI版</h2>
+      <p class="lede">当サイトの区間予想6人（公式区間登録前）と、公表されている5000m・10000mから独自指数で出雲の各区間に換算しました。トラック持ちタイムだけでは中央大学が上に見えやすいところを、ロード適正で國學院大學側に寄せています。確認日 2026-10-06。公式予想ではありません。</p>
+
+      <h3>7大学の合計予想</h3>
+      <table class="rank-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>大学</th>
+            <th>合計</th>
+            <th>差</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="is-home"><td>1</td><td>國學院大學</td><td>2:08:41</td><td>—</td></tr>
+          <tr><td>2</td><td>創価大学</td><td>2:09:14</td><td>+33</td></tr>
+          <tr><td>3</td><td>中央大学</td><td>2:09:25</td><td>+44</td></tr>
+          <tr><td>4</td><td>早稲田大学</td><td>2:10:06</td><td>+1:24</td></tr>
+          <tr><td>5</td><td>順天堂大学</td><td>2:10:49</td><td>+2:08</td></tr>
+          <tr><td>6</td><td>駒澤大学</td><td>2:11:56</td><td>+3:15</td></tr>
+          <tr><td>7</td><td>青山学院大学</td><td>2:11:58</td><td>+3:17</td></tr>
+        </tbody>
+      </table>
+      <p>2025年優勝は午後スタートで2:09:12。2026年は午前9:10号砲のため、条件は少し速い想定です。1位の2:08:41はその補正込みです。</p>
+
+      <h3>使い方（①距離差 F／②ロード適正 R／③選手適性）</h3>
+      <p>予想タイムは <code>トラック補間 × コース係数1.055 × R × S</code> です。</p>
+      <ul class="note">
+        <li>① <strong>F</strong>（距離差分指数）＝ 実10000 ÷ Riegel換算10000（k=1.06）。1.00より小さいほど、5000に対して10000が相対的に強い。外れ値（鈴木琉胤 30:40、永原 30:19）は補間では 0.94〜1.05 に上限。10000未公認は F=1.00 扱い。</li>
+        <li>② <strong>R</strong>（ロード適正指数）＝ チーム補正 ＋ ハーフとRiegelの差 ＋ 出雲2025・箱根102の区間成績。1.00より小さいほどロード向き。國學院 −0.6%、創価 −0.4%、早稲田 −0.3%、駒澤 +0.1%、順天堂 +0.2%、青山学院 +0.4%、中央 +0.6%（トラック型とみたチーム補正）。</li>
+        <li>③ <strong>S</strong>（区間マッチ）＝ 選手のロード親和と区間のロード必要度（2区0.15〜6区0.85）の差。短い区で5000が13:25切、6区でハーフ1:01切／マラソン実績は加点。1年の8km以上は減点。公表情報からの個別補正（区間賞、MGC権、世界ロード代表など）は R に加算。</li>
+      </ul>
+
+      <h3>区間ごとの予想タイム</h3>
+      <div class="table-scroll">
+        <table class="pred-matrix sec-matrix">
+          <thead>
+            <tr>
+              <th>大学</th>
+              <th>1区 8.0</th>
+              <th>2区 5.8</th>
+              <th>3区 8.5</th>
+              <th>4区 6.2</th>
+              <th>5区 6.4</th>
+              <th>6区 10.2</th>
+              <th>合計</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>國學院大學</td><td>23:11</td><td>17:05</td><td>23:29</td><td>17:02</td><td>18:33</td><td>29:21</td><td>2:08:41</td></tr>
+            <tr><td>創価大学</td><td>22:58</td><td>17:15</td><td>23:46</td><td>18:17</td><td>17:41</td><td>29:18</td><td>2:09:14</td></tr>
+            <tr><td>中央大学</td><td>23:17</td><td>16:45</td><td>23:49</td><td>17:53</td><td>18:28</td><td>29:14</td><td>2:09:25</td></tr>
+            <tr><td>早稲田大学</td><td>23:00</td><td>16:29</td><td>25:03</td><td>18:08</td><td>18:19</td><td>29:07</td><td>2:10:06</td></tr>
+            <tr><td>順天堂大学</td><td>23:31</td><td>16:28</td><td>24:53</td><td>17:12</td><td>18:18</td><td>30:28</td><td>2:10:49</td></tr>
+            <tr><td>駒澤大学</td><td>24:25</td><td>16:27</td><td>24:23</td><td>18:08</td><td>19:28</td><td>29:05</td><td>2:11:56</td></tr>
+            <tr><td>青山学院大学</td><td>23:08</td><td>16:22</td><td>25:12</td><td>18:16</td><td>18:19</td><td>30:41</td><td>2:11:58</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>区間トップ予想は、1区織橋、2区平松、3区野中、4区辻原、5区小池、6区桑田です。國學院は3区・4区で稼ぎ、中央は2区の速さに対して長い区で國學院・創価に届かない、という形です。</p>
+
+      <h3>國學院大學 2:08:41</h3>
+      <p>前回どおりの3区野中・4区辻原がモデル上も最速級。髙石の10000とハーフが6区を支える想定です。</p>
+      <div class="table-scroll">
+        <table class="idx-table">
+          <thead>
+            <tr>
+              <th>区</th>
+              <th>選手</th>
+              <th>年</th>
+              <th>5000</th>
+              <th>10000</th>
+              <th>ハーフ</th>
+              <th>F</th>
+              <th>R</th>
+              <th>S</th>
+              <th>予想</th>
+              <th>加味</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1区</td><td>尾熊 迅斗</td><td>3</td><td>13:57.11</td><td>28:35.45</td><td>1:01:46</td><td>0.983</td><td>0.973</td><td>0.997</td><td>23:11</td><td>出雲25・2区</td></tr>
+            <tr><td>2区</td><td>五十嵐 新太</td><td>1</td><td>13:46.57</td><td>28:50.38</td><td>—</td><td>1.004</td><td>1.005</td><td>1.001</td><td>17:05</td><td>1年・ロード実績少</td></tr>
+            <tr><td>3区</td><td>野中 恒亨</td><td>4</td><td>13:28.47</td><td>27:36.64</td><td>1:00:54</td><td>0.983</td><td>0.960</td><td>0.996</td><td>23:29</td><td>出雲25・3区2位／主将</td></tr>
+            <tr><td>4区</td><td>辻原 輝</td><td>4</td><td>13:35.30</td><td>28:24.68</td><td>1:00:51</td><td>1.003</td><td>0.955</td><td>0.993</td><td>17:02</td><td>出雲25・4区区間新</td></tr>
+            <tr><td>5区</td><td>飯國 新太</td><td>3</td><td>13:51.98</td><td>28:23.35</td><td>1:01:51</td><td>0.982</td><td>0.986</td><td>0.998</td><td>18:33</td><td>10000が相対的に強い</td></tr>
+            <tr><td>6区</td><td>髙石 樹</td><td>2</td><td>13:45.29</td><td>27:57.71</td><td>1:00:53</td><td>0.975</td><td>0.981</td><td>0.994</td><td>29:21</td><td>10000・ハーフとも上位</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>創価大学 2:09:14</h3>
+      <p>1区織橋と5区小池がモデル上の武器。6区山口翔輝のハーフ1:00:46も長い区に合う、と見ています。</p>
+      <div class="table-scroll">
+        <table class="idx-table">
+          <thead>
+            <tr>
+              <th>区</th>
+              <th>選手</th>
+              <th>年</th>
+              <th>5000</th>
+              <th>10000</th>
+              <th>ハーフ</th>
+              <th>F</th>
+              <th>R</th>
+              <th>S</th>
+              <th>予想</th>
+              <th>加味</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1区</td><td>織橋 巧</td><td>4</td><td>13:42.97</td><td>28:41.25</td><td>1:01:16</td><td>1.003</td><td>0.967</td><td>0.998</td><td>22:58</td><td>出雲25・1区4位</td></tr>
+            <tr><td>2区</td><td>菅野 元太</td><td>1</td><td>13:46.97</td><td>—</td><td>—</td><td>—</td><td>1.014</td><td>1.002</td><td>17:15</td><td>1年・10000未公認</td></tr>
+            <tr><td>3区</td><td>スティーブン・ムチーニ</td><td>4</td><td>13:26.70</td><td>27:34.32</td><td>1:00:38</td><td>0.984</td><td>0.971</td><td>0.998</td><td>23:46</td><td>出雲25・3区5位／箱根2区</td></tr>
+            <tr><td>4区</td><td>村上 遵世</td><td>1</td><td>13:39.46</td><td>28:59.56</td><td>—</td><td>1.018</td><td>1.005</td><td>1.003</td><td>18:17</td><td>1年</td></tr>
+            <tr><td>5区</td><td>小池 莉希</td><td>4</td><td>13:28.80</td><td>27:52.43</td><td>1:02:21</td><td>0.992</td><td>0.967</td><td>0.995</td><td>17:41</td><td>出雲25・2区4位／箱根26・6区賞</td></tr>
+            <tr><td>6区</td><td>山口 翔輝</td><td>3</td><td>13:56.72</td><td>28:32.51</td><td>1:00:46</td><td>0.982</td><td>0.962</td><td>0.991</td><td>29:18</td><td>出雲25・5区4位／ハーフ上位</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>中央大学 2:09:25</h3>
+      <p>5000・10000の持ちは7校でも上位ですが、チームのロード補正を最も重くしています。2区栗村は短い距離で速い一方、3区以降は國學院・創価のうしろです。</p>
+      <div class="table-scroll">
+        <table class="idx-table">
+          <thead>
+            <tr>
+              <th>区</th>
+              <th>選手</th>
+              <th>年</th>
+              <th>5000</th>
+              <th>10000</th>
+              <th>ハーフ</th>
+              <th>F</th>
+              <th>R</th>
+              <th>S</th>
+              <th>予想</th>
+              <th>加味</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1区</td><td>藤田 大智</td><td>4</td><td>13:28.68</td><td>27:40.50</td><td>1:03:21</td><td>0.985</td><td>1.004</td><td>1.004</td><td>23:17</td><td>箱根26・1区2位／ハーフはトラック比で弱い</td></tr>
+            <tr><td>2区</td><td>栗村 凌</td><td>1</td><td>13:21.99</td><td>—</td><td>—</td><td>—</td><td>1.022</td><td>0.995</td><td>16:45</td><td>1年・10000未公認／U20世界5000</td></tr>
+            <tr><td>3区</td><td>岡田 開成</td><td>3</td><td>13:19.44</td><td>27:37.06</td><td>1:01:11</td><td>0.994</td><td>0.973</td><td>0.999</td><td>23:49</td><td>出雲25・1区区間賞</td></tr>
+            <tr><td>4区</td><td>柴田 大地</td><td>4</td><td>13:43.77</td><td>28:47.65</td><td>1:01:00</td><td>1.006</td><td>0.985</td><td>0.999</td><td>17:53</td><td>ハーフは相対的に良い</td></tr>
+            <tr><td>5区</td><td>三宅 悠斗</td><td>2</td><td>13:28.66</td><td>27:44.45</td><td>1:01:11</td><td>0.987</td><td>1.004</td><td>1.002</td><td>18:28</td><td>今季トラック急伸</td></tr>
+            <tr><td>6区</td><td>佐藤 大介</td><td>3</td><td>13:34.57</td><td>28:10.82</td><td>1:00:40</td><td>0.996</td><td>0.969</td><td>0.993</td><td>29:14</td><td>出雲25・5区3位／世界ロードハーフ</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>早稲田大学 2:10:06</h3>
+      <p>1区山口竣平と2区増子は速い。3区鈴木琉胤は箱根4区区間賞を③で加味しつつ、10000の30:40は代表値とせずキャップしています。6区工藤はマラソン実績で長い区向きです。</p>
+      <div class="table-scroll">
+        <table class="idx-table">
+          <thead>
+            <tr>
+              <th>区</th>
+              <th>選手</th>
+              <th>年</th>
+              <th>5000</th>
+              <th>10000</th>
+              <th>ハーフ</th>
+              <th>F</th>
+              <th>R</th>
+              <th>S</th>
+              <th>予想</th>
+              <th>加味</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1区</td><td>山口 竣平</td><td>3</td><td>13:17.19</td><td>27:59.47</td><td>—</td><td>1.010</td><td>0.991</td><td>1.003</td><td>23:00</td><td>今季5000学生トップ級／箱根3区8位</td></tr>
+            <tr><td>2区</td><td>増子 陽太</td><td>1</td><td>13:20.35</td><td>—</td><td>—</td><td>—</td><td>1.009</td><td>0.994</td><td>16:29</td><td>1年・10000未公認／世界ロード5km</td></tr>
+            <tr><td>3区</td><td>鈴木 琉胤</td><td>2</td><td>13:20.64</td><td>30:40.21</td><td>—</td><td>1.102</td><td>0.977</td><td>1.004</td><td>25:03</td><td>箱根26・4区賞／10000は非代表</td></tr>
+            <tr><td>4区</td><td>本田 桜二郎</td><td>1</td><td>13:32.61</td><td>—</td><td>—</td><td>—</td><td>1.010</td><td>1.003</td><td>18:08</td><td>1年・10000未公認／世界ロード代表</td></tr>
+            <tr><td>5区</td><td>吉倉 ナヤブ直希</td><td>3</td><td>13:37.61</td><td>28:13.07</td><td>1:02:26</td><td>0.993</td><td>0.986</td><td>0.999</td><td>18:19</td><td>箱根26・1区7位</td></tr>
+            <tr><td>6区</td><td>工藤 慎作</td><td>4</td><td>13:38.67</td><td>28:31.87</td><td>1:00:06</td><td>1.003</td><td>0.965</td><td>0.981</td><td>29:07</td><td>東京M・MGC権／マラソン</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>順天堂大学 2:10:49</h3>
+      <p>2区井上と4区山本は箱根の再現性を見ています。6区小林は5000が相対的に遅く、アンカーで落ちる想定です。永原の10000は3000障害型としてキャップ。</p>
+      <div class="table-scroll">
+        <table class="idx-table">
+          <thead>
+            <tr>
+              <th>区</th>
+              <th>選手</th>
+              <th>年</th>
+              <th>5000</th>
+              <th>10000</th>
+              <th>ハーフ</th>
+              <th>F</th>
+              <th>R</th>
+              <th>S</th>
+              <th>予想</th>
+              <th>加味</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1区</td><td>池間 凛斗</td><td>3</td><td>13:34.44</td><td>28:29.80</td><td>1:02:48</td><td>1.007</td><td>0.994</td><td>1.003</td><td>23:31</td><td>箱根26・1区9位</td></tr>
+            <tr><td>2区</td><td>井上 朋哉</td><td>2</td><td>13:38.67</td><td>29:09.25</td><td>1:02:50</td><td>1.025</td><td>0.978</td><td>0.997</td><td>16:28</td><td>箱根26・3区4位</td></tr>
+            <tr><td>3区</td><td>吉岡 大翔</td><td>4</td><td>13:22.99</td><td>28:08.02</td><td>1:02:25</td><td>1.008</td><td>0.996</td><td>1.005</td><td>24:53</td><td>箱根2区経験</td></tr>
+            <tr><td>4区</td><td>山本 悠</td><td>3</td><td>13:34.52</td><td>28:19.16</td><td>1:00:46</td><td>1.001</td><td>0.964</td><td>0.994</td><td>17:12</td><td>箱根26・10区3位／ハーフ上位</td></tr>
+            <tr><td>5区</td><td>永原 颯磨</td><td>3</td><td>13:43.03</td><td>30:19.81</td><td>1:02:25</td><td>1.061</td><td>0.963</td><td>0.999</td><td>18:18</td><td>箱根26・8区3位／10000は非代表</td></tr>
+            <tr><td>6区</td><td>小林 侑世</td><td>4</td><td>14:18.39</td><td>28:57.33</td><td>1:02:46</td><td>0.971</td><td>0.975</td><td>1.002</td><td>30:28</td><td>箱根26・5区5位／距離型</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>駒澤大学 2:11:56</h3>
+      <p>2区小山と6区桑田は強い一方、1区1年生・5区今村の10000がまだ遅く、合計では6位です。</p>
+      <div class="table-scroll">
+        <table class="idx-table">
+          <thead>
+            <tr>
+              <th>区</th>
+              <th>選手</th>
+              <th>年</th>
+              <th>5000</th>
+              <th>10000</th>
+              <th>ハーフ</th>
+              <th>F</th>
+              <th>R</th>
+              <th>S</th>
+              <th>予想</th>
+              <th>加味</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1区</td><td>鈴木 大翔</td><td>1</td><td>13:46.10</td><td>—</td><td>—</td><td>—</td><td>1.012</td><td>1.012</td><td>24:25</td><td>1年・10000未公認／都道府県1区賞</td></tr>
+            <tr><td>2区</td><td>小山 翔也</td><td>4</td><td>13:41.99</td><td>29:24.72</td><td>1:02:38</td><td>1.030</td><td>0.973</td><td>0.997</td><td>16:27</td><td>箱根26・1区5位</td></tr>
+            <tr><td>3区</td><td>谷中 晴</td><td>3</td><td>13:49.71</td><td>28:34.14</td><td>1:00:57</td><td>0.991</td><td>0.964</td><td>0.997</td><td>24:23</td><td>出雲25・1区2位</td></tr>
+            <tr><td>4区</td><td>植阪 嶺児</td><td>4</td><td>13:49.34</td><td>28:23.41</td><td>1:02:28</td><td>0.985</td><td>0.997</td><td>0.999</td><td>18:08</td><td>10000が相対的に良い</td></tr>
+            <tr><td>5区</td><td>今村 仁</td><td>1</td><td>13:48.83</td><td>29:56.23</td><td>—</td><td>1.039</td><td>1.015</td><td>1.005</td><td>19:28</td><td>1年・10000はまだ遅い</td></tr>
+            <tr><td>6区</td><td>桑田 駿介</td><td>3</td><td>13:39.47</td><td>28:07.63</td><td>1:00:13</td><td>0.988</td><td>0.967</td><td>0.992</td><td>29:05</td><td>ハーフ1:00:13／出雲25・3区9位</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>青山学院大学 2:11:58</h3>
+      <p>2区平松は7校で最も速い予想。3区飯田と6区鳥井で失速し、駒澤と2秒差の7位です。</p>
+      <div class="table-scroll">
+        <table class="idx-table">
+          <thead>
+            <tr>
+              <th>区</th>
+              <th>選手</th>
+              <th>年</th>
+              <th>5000</th>
+              <th>10000</th>
+              <th>ハーフ</th>
+              <th>F</th>
+              <th>R</th>
+              <th>S</th>
+              <th>予想</th>
+              <th>加味</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1区</td><td>折田 壮太</td><td>3</td><td>13:28.78</td><td>27:43.92</td><td>1:02:51</td><td>0.987</td><td>0.997</td><td>1.002</td><td>23:08</td><td>出雲25・2区10位／箱根26・10区2位</td></tr>
+            <tr><td>2区</td><td>平松 享祐</td><td>4</td><td>13:34.05</td><td>28:25.01</td><td>1:02:04</td><td>1.005</td><td>0.982</td><td>0.997</td><td>16:22</td><td>箱根26・4区3位</td></tr>
+            <tr><td>3区</td><td>飯田 翔大</td><td>3</td><td>13:34.20</td><td>27:51.51</td><td>1:03:18</td><td>0.985</td><td>1.011</td><td>1.006</td><td>25:12</td><td>出雲25・3区10位</td></tr>
+            <tr><td>4区</td><td>黒田 然</td><td>3</td><td>13:42.18</td><td>28:24.38</td><td>1:02:22</td><td>0.994</td><td>1.008</td><td>1.002</td><td>18:16</td><td>三大駅伝未出走</td></tr>
+            <tr><td>5区</td><td>小河原 陽琉</td><td>3</td><td>13:31.99</td><td>28:37.01</td><td>1:01:30</td><td>1.014</td><td>0.986</td><td>1.001</td><td>18:19</td><td>出雲25・1区6位</td></tr>
+            <tr><td>6区</td><td>鳥井 健太</td><td>4</td><td>13:36.73</td><td>28:10.02</td><td>1:02:23</td><td>0.992</td><td>1.002</td><td>1.009</td><td>30:41</td><td>10000が相対的に良い</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="note">
+        区間配置は当サイトの集計予想です。10月9日の区間登録と当日変更で変わります。PBは公表値の寄せ集めで、計測時期は混在しています。桑田の10000は 28:07.63（フリーダム表の誤記は不採用）。<br>
+        区間予想の出典は
+        <a href="./#izumo-order-2026">國學院</a>／
+        <a href="./#izumo-waseda-order-2026">早稲田</a>／
+        <a href="./#izumo-chuo-order-2026">中央</a>／
+        <a href="./#izumo-soka-order-2026">創価</a>／
+        <a href="./#izumo-juntendo-order-2026">順天堂</a>／
+        <a href="./#izumo-komazawa-order-2026">駒澤</a>／
+        <a href="./#izumo-aogaku-order-2026">青山学院</a>
+        の各記事。<br>
+        記録・成績の出典：
+        <a href="https://www.kokugakuin.com/member/" target="_blank" rel="noopener noreferrer">國學院大學陸上部メンバー紹介</a>／
+        <a href="https://hakonesaijo.sakura.ne.jp/2026-izumo-entry-kanto-1.htm" target="_blank" rel="noopener noreferrer">箱根最乗（Saijo）出雲2026エントリー</a>／
+        <a href="https://www.rikujyokyogi.co.jp/archives/216875" target="_blank" rel="noopener noreferrer">月陸Online</a>／
+        <a href="https://www.nikkansports.com/sports/athletics/news/202609190000391.html" target="_blank" rel="noopener noreferrer">日刊スポーツ</a>／
+        <a href="https://www.izumo-ekiden.jp/" target="_blank" rel="noopener noreferrer">出雲駅伝公式</a>（確認 2026-10-06）。
+      </p>
+    </section>
+
+    <section class="panel panel-gap" id="izumo-chuo-order-2026">
       <p class="kicker">IZUMO 2026 · CHUO</p>
       <h2>出雲駅伝2026 中央大学区間エントリー6日前予想</h2>
       <p class="lede">中央大学の公式10人エントリーは発表済み。6区間の配置は10月9日午前9時の区間登録まで未定です。ウェブ上の完全予想5本を集計し、区間ごとの最多得票をこのサイトの現時点予想としました。同じ選手が2区間で最多になった場合は票数が多い区間を優先し、同票なら若い区を譲ります。それでも割れた区間は、公式10人発表後の完全予想（まったり応援）を採用しています。確認日 2026-10-06。</p>
