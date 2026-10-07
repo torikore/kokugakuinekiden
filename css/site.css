@@ -513,6 +513,18 @@ h2 {
   width: 4.2rem;
   white-space: nowrap;
 }
+.news-roster--wide {
+  width: min(100%, 36rem);
+}
+.news-roster--wide th.mark,
+.news-roster--wide td.mark {
+  width: 3.2rem;
+  padding-right: .6rem;
+}
+.news-roster--wide th:last-child,
+.news-roster--wide td:last-child {
+  width: 8.5rem;
+}
 .news-roster .mark {
   width: 2.4rem;
   color: var(--gold);
