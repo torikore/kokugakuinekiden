@@ -504,6 +504,12 @@ h2 {
 .news-post p {
   margin: .65rem 0;
 }
+.news-post ul {
+  margin: .65rem 0 .65rem 1.2rem;
+}
+.news-post li + li {
+  margin-top: .45rem;
+}
 .news-roster {
   width: min(100%, 26rem);
   margin: .8rem 0;
